@@ -44,11 +44,20 @@ const totalClicksReducer= (state={clickCount: 0}, action) => {   //state= sets d
     return state;
 }
 
+const personReducer = (state = [], action) => {
+    if (action.type === 'ADD_PERSON'){
+        console.log('Adding a person!!!', action);
+        state = [...state, action.payload];
+    }
+    return state;
+}
+
 const storeInstance = createStore(
     combineReducers({
         buttonOneReducer,
         buttonTwoReducer,
-        totalClicksReducer
+        totalClicksReducer,
+        personReducer
     }),
     applyMiddleware(logger)
     
